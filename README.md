@@ -7,6 +7,7 @@ This README file provides instructions on how to execute the Spring Boot applica
 Before running the application, ensure that you have the following prerequisites installed:
 
 - Java Development Kit (JDK) version 17 or later
+- Postman application (Download and install from https://www.postman.com/downloads/)
 
 ## Running the Application
 
@@ -27,6 +28,24 @@ To run the Spring Boot application, follow these steps:
    ```
 
    This command will start the Spring Boot embedded Tomcat server, and the application will be accessible at `http://localhost:8080`.
+
+## Using the Postman Collection
+
+The Postman collection named `Inclusion.postman_collection.json` is located in the root folder. This collection contains pre-configured requests to interact with the application's endpoints.
+
+To use the Postman collection, follow these steps:
+
+1. Open the Postman application.
+2. Click on the **Import** button in the top-left corner.
+3. In the **Import File** tab, select the `Inclusion.postman_collection.json` file from the project's root folder.
+4. Click the **Open** button to import the collection into Postman.
+5. The imported collection will appear in the left sidebar of the Postman application.
+6. Expand the collection to see the available requests.
+7. Click on a request to open it and modify any necessary parameters (e.g., request body, path variables).
+8. Click the **Send** button to execute the request against the running Spring Boot application.
+9. The response will be displayed in the Postman application.
+
+You can execute the provided requests in the Postman collection to interact with the application's endpoints conveniently.
 
 ## Endpoints
 
@@ -63,18 +82,14 @@ Here are some examples of how you can consume the application's endpoints using 
 
    [
      {
-         "id": 49018,
          "x": 7,
          "y": 5,
          "n": 12345,
-         "maxRemainder": 12339
      },
      {
-         "id": 39571,
          "x": 10,
          "y": 5,
          "n": 15,
-         "maxRemainder": 15
      }
    ]
    ```
