@@ -17,24 +17,30 @@ public class RemainderService {
     this.repository = repository;
   }
 
-  public List<Integer> getMax(List<RemainderParamsDTO> remainderParamsDTOs) {
+  public List<RemainderParamsDTO> create(List<RemainderParamsDTO> remainderParamsDTOs) {
 
     var remainderParamsList = RemainderParamsMapper.toEntities(remainderParamsDTOs);
 
     return remainderParamsList.stream().map(entity -> {
 
-      var maxRemainder = repository.getMax(entity.getId());
+      var remainderParams = repository.getById(entity.getId());
 
-      if (maxRemainder != null) {
-        return maxRemainder;
+      if (remainderParams != null && remainderParams.getMaxRemainder() != null) {
+        return RemainderParamsMapper.toDTO(remainderParams);
       }
 
-      maxRemainder = getMaxRemainder(entity);
-      repository.saveMax(entity.getId(), maxRemainder);
-      return maxRemainder;
+      entity.setMaxRemainder(getMaxRemainder(entity));
+      repository.save(entity);
+      return RemainderParamsMapper.toDTO(entity);
 
     }).toList();
 
+  }
+
+  public RemainderParamsDTO getById(int id) {
+    var result = repository.getById(id);
+    if (result == null) return null;
+    return RemainderParamsMapper.toDTO(result);
   }
 
 
